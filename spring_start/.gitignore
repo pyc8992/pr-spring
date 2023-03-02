@@ -35,4 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+*.pdf
 .DS_Store
