@@ -1,6 +1,7 @@
 package hello.spring_start;
 
 import hello.spring_start.controller.HelloRestController;
+import hello.spring_start.service.SimpleHelloService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -26,6 +27,7 @@ public class SpringStartApplication {
 		// spring container -> application context
 		GenericApplicationContext applicationContext = new GenericApplicationContext();
 		applicationContext.registerBean(HelloRestController.class);
+		applicationContext.registerBean(SimpleHelloService.class);
 		applicationContext.refresh();
 
 		ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
