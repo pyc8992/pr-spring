@@ -1,6 +1,8 @@
 package hello.spring_start;
 
+import hello.spring_start.controller.HelloController;
 import hello.spring_start.controller.HelloRestController;
+import hello.spring_start.service.HelloService;
 import hello.spring_start.service.SimpleHelloService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,11 +10,14 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -23,11 +28,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@SpringBootApplication
+//@SpringBootApplication
+@Configuration
 public class SpringStartApplication {
+
+	@Bean
+	public HelloRestController helloRestController(HelloService helloService) {
+		return new HelloRestController(helloService);
+	}
+
+	@Bean
+	public HelloService helloService() {
+		return new SimpleHelloService();
+	}
+
 	public static void main(String[] args) {
 		// spring container -> application context
-		GenericWebApplicationContext applicationContext = new GenericWebApplicationContext() {
+		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
 			@Override
 			protected void onRefresh() {
 				super.onRefresh();
@@ -42,8 +59,7 @@ public class SpringStartApplication {
 			}
 		};
 
-		applicationContext.registerBean(HelloRestController.class);
-		applicationContext.registerBean(SimpleHelloService.class);
+		applicationContext.register(SpringStartApplication.class);
 		applicationContext.refresh();
 
 //		SpringApplication.run(SpringStartApplication.class, args);
