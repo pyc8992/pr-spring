@@ -56,26 +56,7 @@ public class SpringStartApplication {
     }
 
     public static void main(String[] args) {
-        // spring container -> application context
-        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
-            @Override
-            protected void onRefresh() {
-                super.onRefresh();
-
-                ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
-                DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
-//				dispatcherServlet.setApplicationContext(this);
-
-                WebServer webServer = serverFactory.getWebServer(servletContext -> {
-                    servletContext.addServlet("dispatcherServlet", dispatcherServlet)
-                            .addMapping("/*");
-                });
-                webServer.start();
-            }
-        };
-
-        applicationContext.register(SpringStartApplication.class);
-        applicationContext.refresh();
+        MySpringApplication.run(SpringStartApplication.class, args);
 
 //		SpringApplication.run(SpringStartApplication.class, args);
     }
