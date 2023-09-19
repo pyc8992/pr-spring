@@ -45,26 +45,38 @@ public class SpringStartApplication {
 //		return new SimpleHelloService();
 //	}
 
-	public static void main(String[] args) {
-		// spring container -> application context
-		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
-			@Override
-			protected void onRefresh() {
-				super.onRefresh();
+    @Bean
+    public ServletWebServerFactory servletWebServerFactory() {
+        return new TomcatServletWebServerFactory();
+    }
 
-				ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-				WebServer webServer = serverFactory.getWebServer(servletContext -> {
-					servletContext.addServlet("dispatcherServlet",
-									new DispatcherServlet(this))
-							.addMapping("/*");
-				});
-				webServer.start();
-			}
-		};
+    @Bean
+    public DispatcherServlet dispatcherServlet() {
+        return new DispatcherServlet();
+    }
 
-		applicationContext.register(SpringStartApplication.class);
-		applicationContext.refresh();
+    public static void main(String[] args) {
+        // spring container -> application context
+        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
+            @Override
+            protected void onRefresh() {
+                super.onRefresh();
+
+                ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
+                DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+//				dispatcherServlet.setApplicationContext(this);
+
+                WebServer webServer = serverFactory.getWebServer(servletContext -> {
+                    servletContext.addServlet("dispatcherServlet", dispatcherServlet)
+                            .addMapping("/*");
+                });
+                webServer.start();
+            }
+        };
+
+        applicationContext.register(SpringStartApplication.class);
+        applicationContext.refresh();
 
 //		SpringApplication.run(SpringStartApplication.class, args);
-	}
+    }
 }
