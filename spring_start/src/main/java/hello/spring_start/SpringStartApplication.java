@@ -11,6 +11,8 @@ import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpHeaders;
@@ -30,17 +32,18 @@ import java.io.IOException;
 
 //@SpringBootApplication
 @Configuration
+@ComponentScan(basePackages = {"hello.spring_start.service", "hello.spring_start.controller"})
 public class SpringStartApplication {
 
-	@Bean
-	public HelloRestController helloRestController(HelloService helloService) {
-		return new HelloRestController(helloService);
-	}
-
-	@Bean
-	public HelloService helloService() {
-		return new SimpleHelloService();
-	}
+//	@Bean
+//	public HelloRestController helloRestController(HelloService helloService) {
+//		return new HelloRestController(helloService);
+//	}
+//
+//	@Bean
+//	public HelloService helloService() {
+//		return new SimpleHelloService();
+//	}
 
 	public static void main(String[] args) {
 		// spring container -> application context
