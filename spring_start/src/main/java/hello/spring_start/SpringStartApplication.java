@@ -56,8 +56,7 @@ public class SpringStartApplication {
     }
 
     public static void main(String[] args) {
-        MySpringApplication.run(SpringStartApplication.class, args);
-
-//		SpringApplication.run(SpringStartApplication.class, args);
+//        MySpringApplication.run(SpringStartApplication.class, args);
+		SpringApplication.run(SpringStartApplication.class, args);
     }
 }
