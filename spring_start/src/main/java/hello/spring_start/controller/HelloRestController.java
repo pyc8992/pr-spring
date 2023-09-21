@@ -21,16 +21,19 @@ public class HelloRestController
 //        implements ApplicationContextAware
 {
     private final HelloService helloService;
-    private ApplicationContext applicationContext;
+//    private ApplicationContext applicationContext;
 
-    public HelloRestController(HelloService helloService, ApplicationContext applicationContext) {
+    public HelloRestController(HelloService helloService) {
         this.helloService = helloService;
-        this.applicationContext = applicationContext;
     }
 
     @GetMapping("/hello")
     public String hello(String name) {
-        return helloService.sayHello(Objects.requireNonNull(name));
+        if (name == null || name.trim().length() == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return helloService.sayHello(name);
     }
 
 //    @Override
