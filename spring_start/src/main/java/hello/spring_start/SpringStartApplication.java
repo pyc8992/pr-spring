@@ -31,8 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@SpringBootApplication
-@Configuration
-@ComponentScan(basePackages = {"hello.spring_start.service", "hello.spring_start.controller"})
+@MySpringBootAnnotation
 public class SpringStartApplication {
 
 //	@Bean
@@ -44,16 +43,6 @@ public class SpringStartApplication {
 //	public HelloService helloService() {
 //		return new SimpleHelloService();
 //	}
-
-    @Bean
-    public ServletWebServerFactory servletWebServerFactory() {
-        return new TomcatServletWebServerFactory();
-    }
-
-    @Bean
-    public DispatcherServlet dispatcherServlet() {
-        return new DispatcherServlet();
-    }
 
     public static void main(String[] args) {
 //        MySpringApplication.run(SpringStartApplication.class, args);
