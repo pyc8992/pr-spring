@@ -1,12 +1,10 @@
 package hello.spring_start.config.autoconfig;
 
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import hello.spring_start.config.MyAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.DispatcherServlet;
 
-@Configuration
+@MyAutoConfiguration
 public class DispatcherServletConfig {
     @Bean
     public DispatcherServlet dispatcherServlet() {
