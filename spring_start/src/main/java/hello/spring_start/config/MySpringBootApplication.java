@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Configuration
-@ComponentScan(basePackages = {"hello.spring_start.service", "hello.spring_start.controller"})
+@ComponentScan(basePackages = {"hello.spring_start", "hello.spring_start.service", "hello.spring_start.controller"})
 @EnableMyAutoConfiguration
 public @interface MySpringBootApplication {
 }
