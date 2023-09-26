@@ -1,3 +1,4 @@
+hello.spring_start.config.autoconfig.PropertyPlaceholderConfig
 hello.spring_start.config.autoconfig.JettyWebServerConfig
 hello.spring_start.config.autoconfig.TomcatWebServerConfig
 hello.spring_start.config.autoconfig.DispatcherServletConfig
