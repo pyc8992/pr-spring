@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 public class WebServerConfiguration {
 
     // USER 구성 정보가 우선
-    @Bean
-    ServletWebServerFactory customerWebServerFactory() {
-        TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-        serverFactory.setPort(9090);
-        return serverFactory;
-    }
+//    @Bean
+//    ServletWebServerFactory customerWebServerFactory() {
+//        TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+//        serverFactory.setPort(9090);
+//        return serverFactory;
+//    }
 }
