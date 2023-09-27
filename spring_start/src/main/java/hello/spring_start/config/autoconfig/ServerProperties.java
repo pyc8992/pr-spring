@@ -1,5 +1,9 @@
 package hello.spring_start.config.autoconfig;
 
+import hello.spring_start.config.MyConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@MyConfigurationProperties(prefix = "server")
 public class ServerProperties {
     private String contextPath;
     private int port;
