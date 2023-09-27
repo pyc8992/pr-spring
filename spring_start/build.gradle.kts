@@ -10,6 +10,10 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
+	maven {
+		url = uri("https://repo.clojars.org")
+		name = "Clojars"
+	}
 }
 
 dependencies {
@@ -17,6 +21,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web") {
 //		exclude(group = "org.springframework.boot", module = "spring-boot-starter-tomcat")
 	}
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
+	implementation("hikari-cp:hikari-cp:3.0.1")
+	runtimeOnly("com.h2database:h2:2.1.214")
+
+
 //	implementation("org.springframework.boot:spring-boot-starter-jetty")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
