@@ -1,5 +1,7 @@
 package hello.spring_start.service;
 
+import hello.spring_start.Hello;
+import hello.spring_start.HelloRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,10 +24,22 @@ import static org.junit.jupiter.api.Assertions.*;
 @interface UnitTest {
 }
 
-class SimpleHelloServiceTest {
+public class SimpleHelloServiceTest {
+
+    private static final HelloRepository helloRepositoryStub = new HelloRepository() {
+        @Override
+        public Hello findHello(String name) {
+            return null;
+        }
+
+        @Override
+        public void increaseCount(String name) {
+        }
+    };
+
     @FastUnitTest
     void simpleHelloService() {
-        SimpleHelloService helloService = new SimpleHelloService();
+        SimpleHelloService helloService = new SimpleHelloService(helloRepositoryStub);
 
         String result = helloService.sayHello("Test");
 
