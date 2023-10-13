@@ -1,0 +1,10 @@
+.project
+*.prefs
+.classpath
+.settings
+tmp
+.idea/
+.gradle/
+*.http
+gradle.properties
+build/
