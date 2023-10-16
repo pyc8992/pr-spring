@@ -38,8 +38,8 @@ subprojects {
 
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-web:${Versions.Plugin.spring_boot}")
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.60")
-        implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.60")
+//        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.60")
+//        implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.60")
 
 //        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 //        implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.3.60")

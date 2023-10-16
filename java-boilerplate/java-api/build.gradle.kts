@@ -1,5 +1,3 @@
-import org.springframework.boot.gradle.tasks.bundling.BootJar
-
 val providedRuntime: Configuration by configurations.creating
 
 //val project_name: String by project
@@ -13,8 +11,7 @@ repositories {
 
 dependencies {
     implementation(project(":java-domain"))
-
-//    implementation("org.springframework.boot:spring-boot-starter-web:${Versions.Plugin.spring_boot}")
+    implementation("org.springframework.boot:spring-boot-starter-web:${Versions.Plugin.spring_boot}")
 
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }

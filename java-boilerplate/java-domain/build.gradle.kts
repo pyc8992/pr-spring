@@ -6,13 +6,12 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 //tasks.getByName("clean").dependsOn.add(tasks.getByName("xxx"))
 
-tasks.withType<BootJar> {
-    enabled = false
-}
 
-tasks.withType<Jar> {
-    enabled = false
-}
+val jar: Jar by tasks
+val bootJar: BootJar by tasks
+
+jar.enabled = true
+bootJar.enabled = false
 
 repositories {
     mavenCentral()
