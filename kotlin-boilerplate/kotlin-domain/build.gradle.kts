@@ -14,9 +14,15 @@ repositories {
 apply {
     plugin("kotlin-noarg")
     plugin("kotlin-allopen")
-//    plugin("kotlin-jpa")
+    plugin("kotlin-jpa")
 }
 
 configure<NoArgExtension> {
-    annotations(Dependencies.Plugin.kotlin_noarg_target_annotations)
+    annotations(Plugin.kotlin_noarg_target_annotations)
+}
+
+dependencies {
+    implementation(Library.spring_boot_starter_data_jpa.toString())
+    implementation(Library.spring_boot_starter_jdbc.toString())
+    implementation(Library.mysql_connector.toString())
 }

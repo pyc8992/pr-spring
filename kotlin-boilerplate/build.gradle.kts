@@ -15,12 +15,12 @@ plugins {
     jacoco
     groovy
 
-    id(Dependencies.Plugin.spring_boot) version Versions.Plugin.spring_boot apply false
-    kotlin("jvm") version Versions.Plugin.kotlin
-    kotlin("kapt") version Versions.Plugin.kotlin
-    kotlin("plugin.spring") version Versions.Plugin.kotlin apply false
-    kotlin("plugin.noarg") version Versions.Plugin.kotlin apply false
-    kotlin("plugin.allopen") version Versions.Plugin.kotlin apply false
+    id(Plugin.spring_boot) version Versions.spring_boot apply false
+    kotlin("jvm") version Versions.kotlin
+    kotlin("kapt") version Versions.kotlin
+    kotlin("plugin.spring") version Versions.kotlin apply false
+    kotlin("plugin.noarg") version Versions.kotlin apply false
+    kotlin("plugin.allopen") version Versions.kotlin apply false
 
 }
 
@@ -36,12 +36,12 @@ allprojects {
 subprojects {
     apply {
         plugin<KotlinPlatformJvmPlugin>()
-        plugin(Dependencies.Plugin.spring_boot)
+        plugin(Plugin.spring_boot)
 //        plugin(Dependencies.Plugin.dependency_management)
     }
 
     dependencies {
-        implementation("org.springframework.boot:spring-boot-starter-web:${Versions.Plugin.spring_boot}")
+        implementation("org.springframework.boot:spring-boot-starter-web:${Versions.spring_boot}")
         implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.60")
         implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.60")
 
