@@ -29,6 +29,12 @@ object Library {
     id = "spring-boot-starter-jdbc",
     version = Versions.spring_boot
   )
+  val spring_boot_starter_batch = Dependency(
+    group = Plugin.spring_boot,
+    id = "spring-boot-starter-batch",
+    version = Versions.spring_boot
+  )
+
   val apache_poi = Dependency(
     group = "org.apache.poi",
     id = "poi",
