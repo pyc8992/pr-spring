@@ -38,6 +38,9 @@ subprojects {
 
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-web:${Versions.Plugin.spring_boot}")
+        implementation(Dependencies.Library.elasticsearch.toString())
+        implementation(Dependencies.Library.elasticsearch_rest_client.toString())
+        implementation(Dependencies.Library.elasticsearch_rest_high_level_client.toString())
 //        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.60")
 //        implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.60")
 

@@ -6,6 +6,7 @@ object Versions {
 
   object Library {
     const val apache_poi = "5.0.0"
+    const val elasticsearch = "6.8.1"
   }
 }
 
@@ -22,6 +23,10 @@ object Dependencies {
       id = "poi",
       version = Versions.Library.apache_poi
     )
+
+    val elasticsearch = Dependency(group = "org.elasticsearch", id = "elasticsearch", version = Versions.Library.elasticsearch)
+    val elasticsearch_rest_client = Dependency(group = "org.elasticsearch.client", id = "elasticsearch-rest-client", version = Versions.Library.elasticsearch)
+    val elasticsearch_rest_high_level_client = Dependency(group = "org.elasticsearch.client", id = "elasticsearch-rest-high-level-client", version = Versions.Library.elasticsearch)
   }
 }
 
