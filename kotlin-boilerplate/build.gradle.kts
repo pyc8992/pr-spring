@@ -40,13 +40,25 @@ subprojects {
 //        plugin(Dependencies.Plugin.dependency_management)
     }
 
+//    configure<DependencyManagementExtension> {
+////        imports {
+////            mavenBom(Plugin.spring_cloud_dependency.toString())
+////        }
+//
+//        dependencies {
+//            dependency(Library.kotlin_stdlib.toString())
+//            dependency(Library.kotlin_reflect.toString())
+//            dependency(Library.kotlin_coroutine.toString())
+//            dependency(Library.kotlin_logging.toString())
+//        }
+//    }
+
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-web:${Versions.spring_boot}")
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.60")
-        implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.60")
-
-//        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
-//        implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.3.60")
+        implementation(Library.kotlin_stdlib.toString())
+        implementation(Library.kotlin_reflect.toString())
+//        implementation(Library.kotlin_coroutine.toString())
+//        implementation(Library.kotlin_logging.toString())
     }
 
     project(":kotlin-api") {

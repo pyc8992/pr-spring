@@ -24,5 +24,7 @@ configure<NoArgExtension> {
 dependencies {
     implementation(Library.spring_boot_starter_data_jpa.toString())
     implementation(Library.spring_boot_starter_jdbc.toString())
+
     implementation(Library.mysql_connector.toString())
+    implementation(Library.apache_poi.toString())
 }
