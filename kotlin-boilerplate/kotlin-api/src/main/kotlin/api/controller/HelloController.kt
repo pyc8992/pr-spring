@@ -11,4 +11,8 @@ class HelloController(
 ) {
   @GetMapping("/hello")
   fun hello(@RequestParam name: String) = helloService.hello(name)
+
+  @GetMapping("/hello/page")
+  fun hello(@RequestParam name: String, @RequestParam page: Int, @RequestParam size: Int) =
+    helloService.helloByCondition(name, page, size)
 }

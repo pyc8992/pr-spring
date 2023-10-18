@@ -27,4 +27,8 @@ dependencies {
 
     implementation(Library.mysql_connector.toString())
     implementation(Library.apache_poi.toString())
+
+    // queryDsl
+    implementation(Library.querydsl_jpa.toString())
+    kapt(Library.querydsl_apt.toString() + ":jpa")
 }

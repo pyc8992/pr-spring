@@ -7,7 +7,7 @@ repositories {
 
 dependencies {
     implementation(project(":kotlin-domain"))
-    implementation("org.springframework.boot:spring-boot-starter-web:${Versions.spring_boot}")
+    implementation("org.springframework.boot:spring-boot-starter-web:${Version.spring_boot}")
 
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
