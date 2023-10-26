@@ -30,12 +30,12 @@ public class StockService {
      * 문제점
      * - 보통의 application 서버들은 2대 이상을 구축하는데 다른 서버에서는 해당 키워드를 알 수 없기 때문에 race condition 이슈는 여전히 존재
      */
-    public synchronized void decrease(Long id, Long quantity) {
-        // Stock 조회
-        // 재고 감소
-        // 갱신된 값 저장
-        Stock stock = stockRepository.findById(id).orElseThrow();
-        stock.decrease(quantity);
-        stockRepository.saveAndFlush(stock);
-    }
+//    public synchronized void decrease(Long id, Long quantity) {
+//        // Stock 조회
+//        // 재고 감소
+//        // 갱신된 값 저장
+//        Stock stock = stockRepository.findById(id).orElseThrow();
+//        stock.decrease(quantity);
+//        stockRepository.saveAndFlush(stock);
+//    }
 }
