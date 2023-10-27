@@ -2,6 +2,7 @@ package com.example.api.service;
 
 import com.example.api.domain.Coupon;
 import com.example.api.producer.CouponCreateProducer;
+import com.example.api.repository.AppliedUserRepository;
 import com.example.api.repository.CouponCountRepository;
 import com.example.api.repository.CouponRepository;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,13 @@ public class ApplyService {
 
     private final CouponCreateProducer couponCreateProducer;
 
-    public ApplyService(CouponRepository couponRepository, CouponCountRepository couponCountRepository, CouponCreateProducer couponCreateProducer) {
+    private final AppliedUserRepository appliedUserRepository;
+
+    public ApplyService(CouponRepository couponRepository, CouponCountRepository couponCountRepository, CouponCreateProducer couponCreateProducer, AppliedUserRepository appliedUserRepository) {
         this.couponRepository = couponRepository;
         this.couponCountRepository = couponCountRepository;
         this.couponCreateProducer = couponCreateProducer;
+        this.appliedUserRepository = appliedUserRepository;
     }
 
     //    public void apply(Long userId) {
@@ -59,6 +63,25 @@ public class ApplyService {
      *  - 쿠폰에 발급 개수가 많아짐에 따라 RDB에 많은 요청 몰릴 경우 DB부하가 몰려 서버 지연이 발생할 수 있음
      */
     public void applyByKafka(Long userId) {
+        long count = couponCountRepository.increment();
+
+        if (count > 100) {
+            return;
+        }
+
+        couponCreateProducer.create(userId);
+    }
+
+    /**
+     * 쿠폰 개수를 1인 1개로 제어한다
+     */
+    public void applyForUnique(Long userId) {
+        Long apply = appliedUserRepository.add(userId);
+
+        if (apply != 1) {
+            return;
+        }
+
         long count = couponCountRepository.increment();
 
         if (count > 100) {
