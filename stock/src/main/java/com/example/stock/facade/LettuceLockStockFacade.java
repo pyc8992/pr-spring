@@ -21,6 +21,7 @@ public class LettuceLockStockFacade {
      *  - Spin lock 방식
      * 장점
      *  - 구현이 간단함
+     *  - spring data redis를 사용하면 lettuce가 기본 라이브러리로 내장되어 있음
      * 단점 :
      *  - Spin lock 방식이라 Redis에 부하를 줄 수 있음
      */
