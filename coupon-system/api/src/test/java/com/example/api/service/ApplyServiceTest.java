@@ -10,7 +10,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ApplyServiceTest {
@@ -23,7 +22,7 @@ class ApplyServiceTest {
 
     @Test
     public void 한번만응모() {
-        applyService.apply(1L);
+        applyService.applyByRedis(1L);
 
         long count = couponRepository.count();
 
@@ -42,7 +41,7 @@ class ApplyServiceTest {
             long userId = i;
             executorService.submit(() -> {
                 try {
-                    applyService.apply(userId);
+                    applyService.applyByKafka(userId);
                 } finally {
                     latch.countDown();
                 }
